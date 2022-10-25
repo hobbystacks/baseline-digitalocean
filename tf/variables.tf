@@ -19,32 +19,32 @@ variable "ssh_key" {
 variable "domain" {
   description = "Name of your project."
   type        = string
-  # default     = "hobbystacks"
+  default     = "hobbystacks"
 }
 
 variable "droplet_name" {
   description = "Name of your Droplet."
   type        = string
-  # default     = "main"
+  default     = "main"
 }
 
 variable "droplet_image" {
   # Reference: https://slugs.do-api.dev/
   description = "The operating system image we want to use."
   type        = string
-  # default     = "ubuntu-22-04-x64"
+  default     = "ubuntu-22-04-x64"
 }
 
 variable "droplet_region" {
   # Reference: https://slugs.do-api.dev/
   description = "The region to deploy our infrastructure to."
   type        = string
-  # default     = "nyc3"
+  default     = "nyc3"
 }
 
 variable "droplet_size" {
   # Reference: https://slugs.do-api.dev/
   description = "The size we want our droplets to be."
   type        = string
-  # default     = "s-1vcpu-1gb"
+  default     = "s-1vcpu-1gb"
 }
