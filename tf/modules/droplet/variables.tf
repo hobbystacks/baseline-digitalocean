@@ -1,12 +1,6 @@
 ################################################################################
 # [Required Variables]
 ################################################################################
-variable "do_token" {
-  description = "DigitalOcean API token."
-  type        = string
-  sensitive   = true
-}
-
 variable "ssh_key" {
   description = "Name of your SSH Key as it appears in the DigitalOcean dashboard."
   type        = string
@@ -17,13 +11,13 @@ variable "ssh_key" {
 # [Optional Variables]
 ################################################################################
 variable "project_name" {
-  description = "Name of the project."
+  description = "Name of your project."
   type        = string
   default     = "hobbystacks"
 }
 
 variable "droplet_name" {
-  description = "Name of the Droplet."
+  description = "Name of your Droplet."
   type        = string
   default     = "main"
 }
