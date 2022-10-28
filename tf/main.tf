@@ -54,14 +54,6 @@ module "do-project" {
 
   name          = var.project_name
   resource_urns = module.do-ubuntu-server.droplet_urns
-
-  # resource_urns = []
-  # resource_urns = [
-  #   format("do:droplet:%s",module.ubuntu-server.droplet_id)
-  # ]
-  # resource_urns = [
-  #   module.do-ubuntu-server.droplet_urn
-  # ]
 }
 
 # module "do-server-record" {
