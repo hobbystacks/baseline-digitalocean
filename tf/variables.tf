@@ -7,8 +7,14 @@ variable "do_token" {
   sensitive   = true
 }
 
-variable "ssh_key" {
+variable "ssh_public_key" {
   description = "Name of your SSH Key as it appears in the DigitalOcean dashboard."
+  type        = string
+  sensitive   = true
+}
+
+variable "ssh_private_key" {
+  description = "Path to the SSH Key used for the connections."
   type        = string
   sensitive   = true
 }

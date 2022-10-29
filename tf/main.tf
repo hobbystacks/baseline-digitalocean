@@ -41,12 +41,13 @@ provider "digitalocean" {
 module "do-ubuntu-server" {
   source = "./modules/droplet"
 
-  droplet_name   = var.droplet_name
-  droplet_image  = var.droplet_image
-  droplet_region = var.droplet_region
-  ssh_key        = var.ssh_key
+  droplet_name    = var.droplet_name
+  droplet_image   = var.droplet_image
+  droplet_region  = var.droplet_region
+  ssh_public_key  = var.ssh_public_key
+  ssh_private_key = var.ssh_private_key
 
-  # tag            =       var.tag
+  # tags           = var.droplet_tags
 }
 
 module "do-project" {

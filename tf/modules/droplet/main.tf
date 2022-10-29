@@ -6,7 +6,7 @@ locals {
 }
 
 data "digitalocean_ssh_key" "main" {
-  name = var.ssh_key
+  name = var.ssh_public_key
 }
 
 resource "digitalocean_droplet" "web" {
@@ -21,6 +21,35 @@ resource "digitalocean_droplet" "web" {
   ]
 
   tags = []
+
+  connection {
+    host        = self.ipv4_address
+    user        = "root"
+    type        = "ssh"
+    private_key = file(var.ssh_private_key)
+    timeout     = "2m"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "export PATH=$PATH:/usr/bin",
+      # 1. Install Docker
+      "apt update",
+      "apt -y install apt-transport-https ca-certificates curl software-properties-common",
+      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
+      "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | tee /etc/apt/sources.list.d/docker.list > /dev/null",
+      "apt update",
+      "apt-cache policy docker-ce",
+      "apt -y install docker-ce",
+      # "usermod -aG docker ${USER}",
+      "docker -v",
+      # 2. Install Docker Compose
+      "mkdir -p ~/.docker/cli-plugins/",
+      "curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose",
+      "chmod +x ~/.docker/cli-plugins/docker-compose",
+      "docker compose version",
+    ]
+  }
 }
 
 ########################################################################################
