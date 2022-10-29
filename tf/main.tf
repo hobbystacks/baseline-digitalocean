@@ -28,16 +28,9 @@
 #                                                                              #
 ################################################################################
 
-#------------------------------------------------------------------------------#
-
-################################################################################
-# Declare where we want to create our resources and provide the appropriate    #
-# token                                                                        #
-################################################################################
-provider "digitalocean" {
-  token = var.do_token
-}
-
+##############################################################################
+# DigitalOcean: Network
+##############################################################################
 module "do-network" {
   source = "./modules/network"
 
@@ -46,6 +39,9 @@ module "do-network" {
   vpc_ip_range = var.vpc_ip_range
 }
 
+##############################################################################
+# DigitalOcean: Web Servers
+##############################################################################
 module "do-web-servers" {
   source = "./modules/droplet"
 
@@ -60,13 +56,9 @@ module "do-web-servers" {
   # tags           = var.droplet_tags
 }
 
-module "do-project" {
-  source = "./modules/project"
-
-  name          = var.project_name
-  resource_urns = module.do-web-servers.droplet_urns
-}
-
+##############################################################################
+# DigitalOcean: Firewall Rules
+##############################################################################
 # module "do-server-record" {
 #     source = "./modules/record"
 
@@ -74,3 +66,13 @@ module "do-project" {
 #     name           =       module.do-web-servers.droplet_name
 #     value          =       module.do-web-servers.droplet_ip_address
 # }
+
+##############################################################################
+# DigitalOcean: Project
+##############################################################################
+module "do-project" {
+  source = "./modules/project"
+
+  name          = var.project_name
+  resource_urns = module.do-web-servers.droplet_urns
+}
