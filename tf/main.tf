@@ -38,14 +38,24 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-module "do-ubuntu-server" {
+module "do-network" {
+  source = "./modules/network"
+
+  vpc_name     = var.vpc_name
+  vpc_region   = var.vpc_region
+  vpc_ip_range = var.vpc_ip_range
+}
+
+module "do-web-servers" {
   source = "./modules/droplet"
 
+  project_name    = var.project_name
   droplet_name    = var.droplet_name
   droplet_image   = var.droplet_image
   droplet_region  = var.droplet_region
   ssh_public_key  = var.ssh_public_key
   ssh_private_key = var.ssh_private_key
+  vpc_uuid        = module.do-network.vpc_uuid
 
   # tags           = var.droplet_tags
 }
@@ -54,13 +64,13 @@ module "do-project" {
   source = "./modules/project"
 
   name          = var.project_name
-  resource_urns = module.do-ubuntu-server.droplet_urns
+  resource_urns = module.do-web-servers.droplet_urns
 }
 
 # module "do-server-record" {
 #     source = "./modules/record"
 
 #     domain_name    =       var.domain_name
-#     name           =       module.do-ubuntu-server.droplet_name
-#     value          =       module.do-ubuntu-server.droplet_ip_address
+#     name           =       module.do-web-servers.droplet_name
+#     value          =       module.do-web-servers.droplet_ip_address
 # }

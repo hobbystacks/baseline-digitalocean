@@ -13,21 +13,24 @@ variable "ssh_private_key" {
   sensitive   = true
 }
 
-################################################################################
-# [Optional Variables]
-################################################################################
 variable "project_name" {
   description = "Name of your project."
   type        = string
-  default     = "hobbystacks"
 }
 
 variable "droplet_name" {
   description = "Name of your Droplet."
   type        = string
-  default     = "main"
 }
 
+variable "vpc_uuid" {
+  description = "UUID of the VPC holding the droplets."
+  type        = string
+}
+
+################################################################################
+# [Optional Variables]
+################################################################################
 variable "droplet_image" {
   # Reference: https://slugs.do-api.dev/
   description = "The operating system image we want to use."
