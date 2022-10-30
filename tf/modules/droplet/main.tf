@@ -3,6 +3,7 @@
 ########################################################################################
 locals {
   script_directory = "${path.module}/scripts/"
+  docker_directory = "${path.module}/docker-nginx/"
 }
 
 data "digitalocean_ssh_key" "main" {
@@ -36,13 +37,19 @@ resource "digitalocean_droplet" "web" {
 
   provisioner "remote-exec" {
     inline = [
-      "mkdir -p /tmp/scripts/"
+      "mkdir -p /tmp/scripts/",
+      "mkdir -p /var/www/apps",
     ]
   }
 
   provisioner "file" {
     source      = local.script_directory
     destination = "/tmp/scripts/"
+  }
+
+  provisioner "file" {
+    source      = local.docker_directory
+    destination = "/var/www/apps"
   }
 
   provisioner "remote-exec" {
