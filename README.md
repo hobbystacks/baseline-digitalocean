@@ -1,4 +1,4 @@
-# Hobby Stacks - Blank
+# Hobby Stacks - Baseline
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/PhiltasticGuy/hobbystacks)
 
@@ -8,22 +8,22 @@ Our goal is to define a technology stack for hobby projects with **minimal costs
 
 We decided to gear this tech stack towards **commercial projects** which meant opting for a private container registry and code repository.
 
-This example application is a blank project with infrastructure only.
+This example application is a baseline project with infrastructure only.
 
 | Features                         | Tools                                  | Alternatives       | Costs |
 | -------------------------------- | -------------------------------------- | ------------------ | ----- |
 | Hosting                          | [DigitalOcean](https://www.digitalocean.com/pricing/#Compute) | [Vultur](https://www.vultr.com/products/cloud-compute/#pricing) | **5$**    |
 | Container Registry (**Private**) | [Azure Container Registry](https://azure.microsoft.com/en-ca/services/container-registry/) | [GitLab Container Registry](https://docs.gitlab.com/ee/user/project/container_registry.html)* | **5$** / Free |
 | Repositories (**Private**)       | [Azure DevOps](https://azure.microsoft.com/en-ca/services/devops/git-repos/) | GitLab, GitHub      | *Free*  |
-| CI/CD Pipelines                  | [Azure Pipelines](https://azure.microsoft.com/en-ca/services/devops/pipelines/) | GitLab, CircleCI, [Travis CI](https://travis-ci.com/plans/) | *Free*  |
+| CI/CD Pipelines                  | [Azure Pipelines](https://azure.microsoft.com/en-ca/services/devops/pipelines/) | GitLab, GitHub Actions, [Travis CI](https://travis-ci.com/plans/) | *Free*  |
 | Web Server (Reverse Proxy)       | Nginx                                  |                    | *Free*  |
 | Web Performance & Security       | [Cloudflare](https://www.cloudflare.com/plans/#compare-features) | | *Free*  |
 | SSL Certificates                 | [Let's Encrypt](https://letsencrypt.org/about/) + [Certbot](https://certbot.eff.org/about/) | | *Free*  |
 | Multi-Container Tool             | Docker Compose                         |                    | *Free*  |
 | IDE                              | [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) | [Visual Studio Code](https://code.visualstudio.com/) | *Free*  |
-| Front-end + UI                   | ASP.NET Core - MVC + React             |                    | *Free*  |
-| APIs                             | Flask                                  |                    | *Free*  |
-| Database                         | PostgreSQL                             |                    | *Free*  |
+| Front-end + UI                   |                                        |                    | *N/A*  |
+| APIs                             |                                        |                    | *N/A*  |
+| Database                         |                                        |                    | *N/A*  |
 
 *\* GitLab Container Registry is only available for projects hosted on GitLab.*
 
@@ -31,17 +31,8 @@ This example application is a blank project with infrastructure only.
 
 1. DigitalOcean
     - [Prerequisites](#prerequisites-digitalocean)
-    - [Provision Droplet on DigitalOcean](#provision-droplet-on-digitalocean)
-1. Azure DevOps
-    - [Prerequisites](#prerequisites-azure-devops)
-    - [Fork Project in Azure DevOps](#fork-project-in-azure-devops)
-    - [Provision Azure Container Registry](#provision-azure-container-registry)
-    - [Update Deployment Files](#update-deployment-files)
-    - [Configure Service Connections](#configure-service-connections)
-    - [Create Azure Pipelines](#create-azure-pipelines)
-    - [Configure Variables in Azure Pipelines](#configure-variables-in-azure-pipelines)
-1. Deployment
-    - [Create Build from Azure DevOps](#create-build-from-azure-devops)
+2. Deployment
+    - [Deploy infrastructure with Terraform](#deploy-infrastructure-with-terraform)
 
 ### DigitalOcean
 
@@ -52,10 +43,6 @@ In order to provision Droplets on DigitalOcean you will need:
 - **DigitalOcean Account**:
   - If you don't have one, [create your free DigitalOcean account](https://www.digitalocean.com/products/droplets/).
 - **Domain Name**: A domain name from any registrar that you can point to your Droplet. You can refer to this tutorial on DigitalOcean about how to point custom domains from common domain registrars to your Droplet.
-
-#### Provision Droplet on DigitalOcean
-
-More details.
 
 <!-- ### Azure DevOps
 
@@ -141,11 +128,17 @@ More details.
 
 More details. -->
 
+### Deployment
+
+#### Deploy Infrastructure with Terraform
+
+More details.
+
 ## Authors
 
 - **Philippe Turcotte** - *Initial work*
 
-See also the list of [contributors](https://github.com/PhiltasticGuy/hobbystacks-react-flask-postgresql/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hobbystacks/baseline-digitalocean/graphs/contributors) who participated in this project.
 
 ## License
 
