@@ -5,7 +5,9 @@ services:
     image: jwilder/whoami
     environment:
       - VIRTUAL_HOST=first.local
+    networks:
+      - nginx-proxy
 
 networks:
-  default:
-      name: nginx-proxy
+  nginx-proxy:
+    external: true
