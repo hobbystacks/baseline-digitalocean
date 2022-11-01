@@ -2,13 +2,13 @@
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/PhiltasticGuy/hobbystacks)
 
+This is Hobby Stacks' baseline project for provisioning the Infrastructure as Code using Terraform on DigitalOcean.
+
 ## Why create *Hobby Stacks*?
 
 Our goal is to define a technology stack for hobby projects with **minimal costs**. We also want to offer real-world examples that go beyond canned tutorials showcasing isolated technologies or features.
 
 We decided to gear this tech stack towards **commercial projects** which meant opting for a private container registry and code repository.
-
-This example application is a baseline project with infrastructure only.
 
 | Features                         | Tools                                  | Alternatives       | Costs |
 | -------------------------------- | -------------------------------------- | ------------------ | ----- |
@@ -16,7 +16,7 @@ This example application is a baseline project with infrastructure only.
 | Container Registry (**Private**) | [Azure Container Registry](https://azure.microsoft.com/en-ca/services/container-registry/) | [GitLab Container Registry](https://docs.gitlab.com/ee/user/project/container_registry.html)* | **5$** / Free |
 | Repositories (**Private**)       | [Azure DevOps](https://azure.microsoft.com/en-ca/services/devops/git-repos/) | GitLab, GitHub      | *Free*  |
 | CI/CD Pipelines                  | [Azure Pipelines](https://azure.microsoft.com/en-ca/services/devops/pipelines/) | GitLab, GitHub Actions, [Travis CI](https://travis-ci.com/plans/) | *Free*  |
-| Web Server (Reverse Proxy)       | Nginx                                  |                    | *Free*  |
+| Web Server (Reverse Proxy)       | Nginx                                  | Traefik            | *Free*  |
 | Web Performance & Security       | [Cloudflare](https://www.cloudflare.com/plans/#compare-features) | | *Free*  |
 | SSL Certificates                 | [Let's Encrypt](https://letsencrypt.org/about/) + [Certbot](https://certbot.eff.org/about/) | | *Free*  |
 | Multi-Container Tool             | Docker Compose                         |                    | *Free*  |
@@ -29,20 +29,23 @@ This example application is a baseline project with infrastructure only.
 
 ## Getting Started
 
-1. DigitalOcean
-    - [Prerequisites](#prerequisites-digitalocean)
-2. Deployment
-    - [Deploy infrastructure with Terraform](#deploy-infrastructure-with-terraform)
+1. Prerequisites
+    - [DigitalOcean](#digitalocean)
+2. Provisioning
+    - [Provision infrastructure with Terraform](#provision-infrastructure-with-terraform)
 
-### DigitalOcean
+### Prerequisites
 
-#### Prerequisites (DigitalOcean)
+#### DigitalOcean
 
-In order to provision Droplets on DigitalOcean you will need:
+In order to provision the infrastructure on DigitalOcean you will need:
 
 - **DigitalOcean Account**:
   - If you don't have one, [create your free DigitalOcean account](https://www.digitalocean.com/products/droplets/).
-- **Domain Name**: A domain name from any registrar that you can point to your Droplet. You can refer to this tutorial on DigitalOcean about how to point custom domains from common domain registrars to your Droplet.
+- **API Token created for your account**:
+  - If you don't have one, [create an API Token for your DigitalOcean account](https://docs.digitalocean.com/reference/api/create-personal-access-token/).
+- **SSH Key uploaded to your account**:
+  - If you don't have one, [upload an SSH Key to your DigitalOcean account](https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/to-team/).
 
 <!-- ### Azure DevOps
 
@@ -128,9 +131,9 @@ More details.
 
 More details. -->
 
-### Deployment
+### Provisioning
 
-#### Deploy Infrastructure with Terraform
+#### Provision Infrastructure with Terraform
 
 More details.
 
