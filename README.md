@@ -32,7 +32,7 @@ We decided to gear this tech stack towards **commercial projects** which meant o
 1. Prerequisites
     - [DigitalOcean](#digitalocean)
 2. Provisioning
-    - [Provision infrastructure with Terraform](#provision-infrastructure-with-terraform)
+    - [Provision Infrastructure with Terraform](#provision-infrastructure-with-terraform)
 
 ### Prerequisites
 
