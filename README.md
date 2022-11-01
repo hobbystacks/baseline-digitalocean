@@ -6,7 +6,7 @@ This is Hobby Stacks' baseline project for provisioning the Infrastructure as Co
 
 ## Why create *Hobby Stacks*?
 
-Our goal is to define a technology stack for hobby projects with **minimal costs**. We also want to offer real-world examples that go beyond canned tutorials showcasing isolated technologies or features.
+Our goal is to define a technology stack for hobby projects with **minimal costs**. We also want to offer real-world examples that go beyond basic tutorials that showcase technologies or features in overly simplified scenarios.
 
 We decided to gear this tech stack towards **commercial projects** which meant opting for a private container registry and code repository.
 
